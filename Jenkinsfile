@@ -43,6 +43,12 @@ pipeline {
         sh 'docker push mazood/healthcare:1.0'
             }
       }
+    stage('AWS-Login') {
+      steps {
+        withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'Awsaccess', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+         }
+      }
+    }
     stage('Terraform Operations for test workspace') {
       steps {
         script {
