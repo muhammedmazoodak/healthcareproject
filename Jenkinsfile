@@ -23,5 +23,11 @@ pipeline {
         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '/var/lib/jenkins/workspace/healthcare/target/surefire-reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
                           }
             }
+    stage('Create Docker Image') {
+      steps {
+        echo 'This stage will Create a Docker image'
+        sh 'docker build -t mazood/healthcare:1.0 .'
+                          }
+            }
   }
 }
